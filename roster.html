@@ -17,41 +17,38 @@
         <h2 class="text-center">Team Roster</h2>
         <div class="row" id="roster">
             <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "ou_football";
+            // Include the database connection utility file
+            require 'util-db.php';
 
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
+            // Get the database connection
+            $conn = get_db_connection();
 
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+            if ($conn) {
+                $sql = "SELECT * FROM players";
+                $result = $conn->query($sql);
 
-            $sql = "SELECT * FROM players";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "
-                    <div class='col-md-4'>
-                        <div class='card shadow-sm mb-4'>
-                            <img src='{$row['photo_url']}' class='card-img-top' alt='{$row['name']}'>
-                            <div class='card-body'>
-                                <h5 class='card-title'>{$row['name']}</h5>
-                                <p class='card-text'>Position: {$row['position']}<br>Number: {$row['number']}<br>Year: {$row['year']}</p>
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "
+                        <div class='col-md-4'>
+                            <div class='card shadow-sm mb-4'>
+                                <img src='{$row['photo_url']}' class='card-img-top' alt='{$row['name']}'>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>{$row['name']}</h5>
+                                    <p class='card-text'>Position: {$row['position']}<br>Number: {$row['number']}<br>Year: {$row['year']}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    ";
+                        ";
+                    }
+                } else {
+                    echo "<p class='text-center'>No players found!</p>";
                 }
-            } else {
-                echo "<p class='text-center'>No players found!</p>";
-            }
 
-            $conn->close();
+                $conn->close();
+            } else {
+                echo "<p class='text-center text-danger'>Failed to connect to the database.</p>";
+            }
             ?>
         </div>
     </main>
