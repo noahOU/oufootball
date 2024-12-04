@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <?php require 'navbar.php'; ?>
+
     <header class="bg-dark text-white py-3 shadow-sm">
         <div class="container">
             <h1 class="h3">OU Football Team - Schedule</h1>
@@ -26,38 +28,32 @@
             </thead>
             <tbody>
                 <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "ou_football";
+                require 'util-db.php';
+                $conn = get_db_connection();
 
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
+                if ($conn) {
+                    $sql = "SELECT * FROM games ORDER BY date ASC";
+                    $result = $conn->query($sql);
 
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-
-                $sql = "SELECT * FROM games ORDER BY date ASC";
-                $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "
-                        <tr>
-                            <td>" . date("F j, Y", strtotime($row['date'])) . "</td>
-                            <td>{$row['opponent']}</td>
-                            <td>{$row['location']}</td>
-                            <td>{$row['result']}</td>
-                        </tr>
-                        ";
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "
+                            <tr>
+                                <td>" . date("F j, Y", strtotime($row['date'])) . "</td>
+                                <td>{$row['opponent']}</td>
+                                <td>{$row['location']}</td>
+                                <td>{$row['result']}</td>
+                            </tr>
+                            ";
+                        }
+                    } else {
+                        echo "<tr><td colspan='4' class='text-center'>No games scheduled!</td></tr>";
                     }
-                } else {
-                    echo "<tr><td colspan='4' class='text-center'>No games scheduled!</td></tr>";
-                }
 
-                $conn->close();
+                    $conn->close();
+                } else {
+                    echo "<tr><td colspan='4' class='text-center text-danger'>Failed to connect to the database.</td></tr>";
+                }
                 ?>
             </tbody>
         </table>
