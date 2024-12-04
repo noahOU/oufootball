@@ -9,6 +9,7 @@
 </head>
 <body>
     <?php require 'navbar.php'; ?>
+
     <header class="bg-dark text-white py-3 shadow-sm">
         <div class="container">
             <h1 class="h3">OU Football Team - Roster</h1>
@@ -18,10 +19,7 @@
         <h2 class="text-center">Team Roster</h2>
         <div class="row" id="roster">
             <?php
-            // Include the database connection utility file
             require 'util-db.php';
-
-            // Get the database connection
             $conn = get_db_connection();
 
             if ($conn) {
