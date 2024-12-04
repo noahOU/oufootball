@@ -10,11 +10,7 @@
 <body>
     <?php require 'navbar.php'; ?>
 
-    <header class="bg-dark text-white py-3 shadow-sm">
-        <div class="container">
-            <h1 class="h3">OU Football Team - Fan Comments</h1>
-        </div>
-    </header>
+
     <main class="container my-5">
         <h2 class="text-center">Join the Conversation</h2>
         <form action="fans.php" method="POST" class="mb-5">
