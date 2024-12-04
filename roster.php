@@ -10,11 +10,6 @@
 <body>
     <?php require 'navbar.php'; ?>
 
-    <header class="bg-dark text-white py-3 shadow-sm">
-        <div class="container">
-            <h1 class="h3">OU Football Team - Roster</h1>
-        </div>
-    </header>
     <main class="container my-5">
         <h2 class="text-center">Team Roster</h2>
         <div class="row" id="roster">
