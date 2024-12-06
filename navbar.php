@@ -3,7 +3,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <nav class="navbar navbar-expand-lg" style="background-color: #841617;">
     <div class="container">
-        <a class="navbar-brand text-white" href="index.php">OU Football Hub</a>
+        <a class="navbar-brand text-white" href="index.html">OU Football Hub</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
