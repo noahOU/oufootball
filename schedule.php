@@ -6,6 +6,7 @@
     <title>OU Football Schedule</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="images/helmet.png">
 </head>
 <body>
     <?php require 'navbar.php'; ?>
