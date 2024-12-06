@@ -10,7 +10,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link <?php echo $current_page == 'index.html' ? 'active text-warning' : 'text-white'; ?>" href="index.php">Home</a>
+                    <a class="nav-link <?php echo $current_page == 'index.html' ? 'active text-warning' : 'text-white'; ?>" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?php echo $current_page == 'roster.php' ? 'active text-warning' : 'text-white'; ?>" href="roster.php">Roster</a>
