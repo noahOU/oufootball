@@ -21,6 +21,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 <li class="nav-item">
                     <a class="nav-link <?php echo $current_page == 'fans.php' ? 'active text-warning' : 'text-white'; ?>" href="fans.php">Fans</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php echo $current_page == 'transfer-portal.php' ? 'active text-warning' : 'text-white'; ?>" href="transfer-portal.php">Transfer Portal</a>
+                </li>
             </ul>
         </div>
     </div>
