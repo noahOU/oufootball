@@ -1,5 +1,6 @@
 <?php
 require 'util-db.php';
+session_start();
 
 $conn = get_db_connection();
 if ($conn) {
@@ -15,13 +16,16 @@ if ($conn) {
             VALUES ('$name', '$position', $number, '$height', '$weight', '$year', '$photo_url')";
 
     if ($conn->query($sql) === TRUE) {
-        header('Location: roster.php');
-        exit();
+        $_SESSION['message'] = 'Player added successfully!';
+        $_SESSION['message_type'] = 'success';
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        $_SESSION['message'] = 'Error adding player: ' . $conn->error;
+        $_SESSION['message_type'] = 'danger';
     }
 
     $conn->close();
+    header('Location: roster.php');
+    exit();
 } else {
     echo "Failed to connect to the database.";
 }
